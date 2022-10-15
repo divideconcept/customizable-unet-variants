@@ -1,6 +1,7 @@
 # Customizable UNet Variants
 
-Different variants and evolutions of the UNet model, in highly customizable forms.
+Different variants and evolutions of the UNet model in highly customizable forms.
+Requires PyTorch 1.7 or higher.
 
 **UNet**: The original UNet from https://arxiv.org/abs/1505.04597 (2015)
 - in_channels: number of channels in the input tensor.
