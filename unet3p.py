@@ -129,11 +129,5 @@ class UNet3P(nn.Module):
             decoder_outs[i] = self.decoders[i](encoder_outs[:i + 1][::-1], decoder_outs[i + 1:]+[encoder_outs[-1]])
 
         output=self.conv_final(decoder_outs[0])
-        #        for i, decoder in enumerate(self.decoders):
-        #            x = decoder(encoder_outs[-(i+2)], x)
-
-        # No softmax is used. This means you need to use
-        # nn.CrossEntropyLoss is your training script,
-        # as this module includes a softmax already.
-        #        x = self.conv_final(x)
+        
         return output
