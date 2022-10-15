@@ -120,7 +120,7 @@ class UpConv(nn.Module):
         return x
 
 
-class MultiResUNet2D(nn.Module):
+class MultiResUNet(nn.Module):
     """ `MultiResUNet` class is based on https://arxiv.org/pdf/1902.04049.pdf
     MultiResUNet is a convolutional encoder-decoder neural network.
     
