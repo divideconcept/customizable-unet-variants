@@ -64,14 +64,9 @@ class UpConv(nn.Module):
         return x
 
 
-class UNet1D(nn.Module):
-    """ `UNet` class is based on https://arxiv.org/abs/1505.04597
-    UNet is a convolutional encoder-decoder neural network.
-    
-    This 1D variant is inspired by 1D Unet are inspired by the
-    Wave UNet ( https://arxiv.org/pdf/1806.03185.pdf )
-    Default parameters correspond to the Wave UNet.
-    Convolutions use padding to preserve the original size.
+class WaveUNet(nn.Module):
+    """ `WaveUNet` class is an 1D variant of the UNet ( https://arxiv.org/pdf/1806.03185.pdf )
+    Default parameters correspond to the original Wave UNet.
 
     Args:
         in_channels: number of channels in the input tensor.
