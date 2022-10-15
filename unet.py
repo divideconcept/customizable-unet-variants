@@ -89,7 +89,7 @@ class UpConv(nn.Module):
                 self.in_channels, self.out_channels, self.conv_per_block, self.kernel_size, self.batch_norm, self.add_merging, self.conv_upscaling
             )
 
-class UNet2D(nn.Module):
+class UNet(nn.Module):
     """ `UNet` class is based on https://arxiv.org/abs/1505.04597
     UNet is a convolutional encoder-decoder neural network.
     
