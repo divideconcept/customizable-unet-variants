@@ -44,3 +44,13 @@ Requires PyTorch 1.7 or higher.
 - depth: number of levels
 - kernel_size: kernel size for all block convolutions
 - batch_norm: use batch norm
+
+**HalfUNet**: A light and efficient version of the UNet https://www.frontiersin.org/articles/10.3389/fninf.2022.911679/full (2022)
+- in_channels: number of channels in the input tensor.
+- out_channels: number of channels in the output tensor.
+- feature_channels: number of channels in the first and last hidden feature layer.
+- depth: number of levels
+- conv_per_block: number of convolutions per level block
+- kernel_size: kernel size for all block convolutions
+- batch_norm: use batch norm
+- add_merging: merge layers from different levels using a add instead of a concat
