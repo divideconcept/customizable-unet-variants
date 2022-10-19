@@ -30,7 +30,7 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    def __init__(self, encoders_channels, decoders_channels, feature_channels, kernel_size, batch_norm):
+    def __init__(self, encoders_channels, decoders_channels, feature_channels, kernel_size, batch_norm, upsampling):
         super().__init__()
         self.encoders_conv = []
         self.decoders_conv = []
@@ -47,7 +47,7 @@ class Decoder(nn.Module):
 
         for i, decoder_channels in enumerate(decoders_channels):
             sequence = []
-            sequence.append(nn.Upsample(mode='bilinear', scale_factor=2 ** (i + 1)))
+            sequence.append(nn.Upsample(mode=upsampling, scale_factor=2 ** (i + 1)))
             sequence.append(nn.Conv2d(decoder_channels, feature_channels, kernel_size, padding=(kernel_size - 1) // 2))
             if batch_norm:
                 sequence.append(nn.BatchNorm2d(feature_channels))
@@ -82,10 +82,11 @@ class UNet3P(nn.Module):
         depth: number of levels
         kernel_size: kernel size for all block convolutions
         batch_norm: use batch norm
+        upsampling: upsampling mode, can be 'bilinear' or 'nearest'
     """
 
     def __init__(self, in_channels=3, out_channels=1, feature_channels=64,
-                 depth=5, kernel_size=3, batch_norm=True):
+                 depth=5, kernel_size=3, batch_norm=True, upsampling='bilinear'):
         super().__init__()
 
         self.encoders = []
@@ -108,7 +109,7 @@ class UNet3P(nn.Module):
             for j in range(depth - i - 2):
                 outs.append(feature_channels*depth)
             outs.append(feature_channels * (2 ** (depth - 1)))
-            decoder = Decoder(ins, outs, feature_channels, kernel_size, batch_norm)
+            decoder = Decoder(ins, outs, feature_channels, kernel_size, batch_norm, upsampling)
             self.decoders.append(decoder)
 
         self.conv_final = nn.Conv2d(feature_channels*depth, out_channels, kernel_size, padding=(kernel_size - 1) // 2)
