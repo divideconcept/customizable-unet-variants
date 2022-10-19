@@ -68,7 +68,7 @@ class UpConv(nn.Module):
             self.upconv = nn.ConvTranspose2d(in_channels,out_channels,kernel_size=2,stride=2)
         else:
             self.upconv = nn.Sequential(nn.Upsample(mode='nearest', scale_factor=2),
-            nn.Conv2d(in_channels, out_channels,kernel_size=1,groups=1,stride=1))
+            nn.Conv2d(in_channels, out_channels,kernel_size=3,padding=1))
 
             
         self.block = block(out_channels*2 if not add_merging else out_channels, out_channels, conv_per_block, kernel_size, batch_norm)
