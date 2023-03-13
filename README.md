@@ -27,6 +27,18 @@ Requires PyTorch 1.7 or higher.
 - conv_downscaling: use a strided convolution instead of maxpooling
 - add_merging: merge layers from different levels using a add instead of a concat
 
+**Attention UNet**: https://arxiv.org/abs/1804.03999 (2018)
+- in_channels: number of channels in the input tensor.
+- out_channels: number of channels in the output tensor.
+- feature_channels: number of channels in the first and last hidden feature layer.
+- depth: number of levels
+- conv_per_block: number of convolutions per level block
+- kernel_size: kernel size for all block convolutions
+- batch_norm: add a batch norm after ReLU
+- conv_upscaling: use a nearest upscale+conv instead of transposed convolution
+- conv_downscaling: use a strided convolution instead of maxpooling
+- add_merging: merge layers from different levels using a add instead of a concat
+
 **MultiResUNet**: https://arxiv.org/abs/1902.04049 (2019)
 - in_channels: number of channels in the input tensor.
 - out_channels: number of channels in the output tensor.
@@ -45,7 +57,7 @@ Requires PyTorch 1.7 or higher.
 - kernel_size: kernel size for all block convolutions
 - batch_norm: use batch norm
 
-**HalfUNet**: A light and efficient version of the UNet https://www.frontiersin.org/articles/10.3389/fninf.2022.911679/full (2022)
+**HalfUNet**: A light version of the UNet https://www.frontiersin.org/articles/10.3389/fninf.2022.911679/full (2022)
 - in_channels: number of channels in the input tensor.
 - out_channels: number of channels in the output tensor.
 - feature_channels: number of channels in the first and last hidden feature layer.
