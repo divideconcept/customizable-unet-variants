@@ -66,3 +66,18 @@ Requires PyTorch 1.7 or higher.
 - kernel_size: kernel size for all block convolutions
 - batch_norm: use batch norm
 - add_merging: merge layers from different levels using a add instead of a concat
+
+**TransUNet**: TransUNet is a UNet with a Transformer at its core https://arxiv.org/abs/2102.04306 (2021)
+- in_channels: number of channels in the input tensor.
+- out_channels: number of channels in the output tensor.
+- feature_channels: number of channels in the first and last hidden feature layer.
+- depth: number of levels
+- conv_per_block: number of convolutions per level block
+- kernel_size: kernel size for all block convolutions
+- batch_norm: add a batch norm after ReLU
+- conv_upscaling: use a nearest upscale+conv instead of transposed convolution
+- conv_downscaling: use a strided convolution instead of maxpooling
+- add_merging: merge layers from different levels using a add instead of a concat
+- trans_heads: number of transformer heads
+- trans_depth: number of transformer layers
+- trans_width: dimension of the transformer feedforward layer
