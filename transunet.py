@@ -166,7 +166,7 @@ class TransUNet(nn.Module):
         x = x.permute(2, 0, 1) #NES to SNE
         x = self.transformer(x)
         x = x.permute(1, 0, 2) #SNE to NES
-        x = x.view(N, C, H, W) #NES to NCHW
+        x = x.reshape(N, C, H, W) #NES to NCHW
 
         for i, module in enumerate(self.up_convs):
             before_pool = encoder_outs[-(i+2)]
